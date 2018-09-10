@@ -8,10 +8,22 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon ./server/server.js"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "nodemon": "^1.18.4"
   }
 }
