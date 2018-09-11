@@ -1,4 +1,4 @@
-var rooms = ['Sherman Oak\'s Mansion', 
+module.exports = ['Sherman Oak\'s Mansion', 
 'Charles Mansion', 
 'All Inclusive Garage', 
 'Apple Cellar', 
