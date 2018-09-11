@@ -1,23 +1,29 @@
-DROP database IF EXISTS Rooms;
+DROP database IF EXISTS airbnb;
 
-CREATE database Rooms;
+CREATE database airbnb;
 
-USE Rooms;
+USE airbnb;
 
-CREATE table Listings (
+CREATE table rooms (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50),
-  basicInfo VARCHAR(150),
-  pricePerNight INT,
-  averageRating DECIMAL(2, 1),
-  imageUrl VARCHAR(150),
+  PRIMARY KEY(id)
+);
+
+CREATE table similar_listings (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50),
+  basic_info VARCHAR(150),
+  price_per_night INT,
+  average_rating DECIMAL(2, 1),
+  image_url VARCHAR(150),
   PRIMARY KEY(id) 
 );
 
-CREATE table SimilarListings (
-  listing_id INT NOT NULL,
+CREATE table rooms2similar_listings (
+  room_id INT NOT NULL,
   similar_listing_id INT NOT NULL,
-  FOREIGN KEY (listing_id) REFERENCES Listings(id),
-  FOREIGN KEY (similar_listing_id) REFERENCES Listings(id),
-  PRIMARY KEY listing2listing(listing_id, similar_listing_id)
+  FOREIGN KEY (room_id) REFERENCES rooms(id),
+  FOREIGN KEY (similar_listing_id) REFERENCES similar_listings(id),
+  PRIMARY KEY rooms2similar_listing(room_id, similar_listing_id)
 )
