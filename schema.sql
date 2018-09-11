@@ -21,9 +21,12 @@ CREATE table similar_listings (
 );
 
 CREATE table rooms2similar_listings (
-  room_id INT NOT NULL,
-  similar_listing_id INT NOT NULL,
-  FOREIGN KEY (room_id) REFERENCES rooms(id),
-  FOREIGN KEY (similar_listing_id) REFERENCES similar_listings(id),
-  PRIMARY KEY rooms2similar_listing(room_id, similar_listing_id)
+  room_id INT,
+  similar_listing_id INT,
+  FOREIGN KEY (room_id) 
+    REFERENCES rooms(id)
+    ON UPDATE CASCADE,
+  FOREIGN KEY (similar_listing_id) 
+    REFERENCES similar_listings(id)
+    ON UPDATE CASCADE
 )
