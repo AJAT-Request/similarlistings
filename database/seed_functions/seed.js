@@ -6,21 +6,19 @@ const faker = require('faker');
 // 'glass house', 'grass house', 'hut', 'igloo', 'nice house', 
 // 'nicer house', 'rick and morty\'s house'];
 
-// var seedRooms = function(rooms) {
-//   var queryString = 'insert into rooms(name) values(?)';
+var seedRooms = function(rooms) {
+  var queryString = 'insert into rooms(name) values(?)';
+  var queryArgs = rooms;
 
-//   rooms.forEach(function(room) {
-//   	var queryArgs = room;
+  con.query(queryString, [queryArgs], function(err, results) {
+    console.log(results);
+  });
 
-//   	con.query(queryString, queryArgs, function(err, results) {
-//   	  console.log('Added ' + results.affectedRows + ' row');
-//   	});
-//   })
-// }
+}
 
-// var seedSimilarListings = function(similiarListings) {
+var seedSimilarListings = function(similiarListings) {
   
-// }
+}
 
-// seedRooms(rooms);
+seedRooms(rooms);
 
