@@ -4,13 +4,7 @@ CREATE database airbnb;
 
 USE airbnb;
 
-CREATE table rooms (
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(50),
-  PRIMARY KEY(id)
-);
-
-CREATE table similar_listings (
+CREATE table listings (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50),
   basic_info VARCHAR(150),
@@ -20,13 +14,12 @@ CREATE table similar_listings (
   PRIMARY KEY(id) 
 );
 
-CREATE table rooms2similar_listings (
-  room_id INT,
+CREATE table listings2listings (
   similar_listing_id INT,
-  FOREIGN KEY (room_id) 
-    REFERENCES rooms(id)
-    ON UPDATE CASCADE,
-  FOREIGN KEY (similar_listing_id) 
-    REFERENCES similar_listings(id)
-    ON UPDATE CASCADE
-)
+  listing_id INT,
+  FOREIGN KEY (similar_listing_id) REFERENCES listings(id),
+  FOREIGN KEY (listing_id) REFERENCES listings(id),
+  PRIMARY KEY (listing_id, similar_listing_id)
+);
+
+

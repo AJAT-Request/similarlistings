@@ -6,5 +6,9 @@
  */
 
 module.exports = {
-  extends: './node_modules/eslint-config-airbnb/index.js'
+  "extends": "airbnb",
+  "env": {
+  	"browser": true,
+  	"node": true
+  }
 };
