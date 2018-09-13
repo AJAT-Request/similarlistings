@@ -6,7 +6,7 @@ const db = require('../database/index.js');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client/dist/'));
+app.use(express.static(path.join(__dirname, '/../client/dist/')));
 
 app.get('/rooms:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));

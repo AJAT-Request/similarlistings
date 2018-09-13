@@ -12,26 +12,24 @@ class SimilarListings extends React.Component {
 
   componentDidMount() {
     $.ajax({
- 	  url: `http://localhost:3000/listings${this.props.roomId}`,
- 	  method: 'GET',
+      url: `http://localhost:3000/listings${this.props.roomId}`,
+      method: 'GET',
       contentType: 'application/json',
       success: (listings) => {
-      	console.log(listings)
         this.setState({
-    	  listings: listings
+          listings: listings,
         });
- 	  },
+      },
       error: (err) => {
-	 	console.log(err);
-	 }
-	})
+        console.error(err);
+      },
+    });
   }
 
   render() {
     return (
       <div>
-        Similar Listings
-        <Listing listings={this.state.listings}/>
+        <Listing listings={this.state.listings} />
       </div>
     );
   }

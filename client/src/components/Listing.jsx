@@ -1,20 +1,9 @@
 import React from 'react';
 
-const Listing = (props) => (
+const Listing = ({ listings }) => (
   <div>
-    {
-      props.listings.map(listing => 
-      	<h1>
-      	  {listing.name}
-      	  <img src={listing.image_url}></img>
-      	</h1>
-
-      	)
-
-    }
-  </div>	
-
+    {listings.map(listing => <h1>{listing.name}</h1>)}
+  </div>
 );
-
 
 export default Listing;
