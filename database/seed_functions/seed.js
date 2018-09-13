@@ -23,7 +23,7 @@ const getListings = function() {
   const listings = [];
   const photoUrls = data.photoUrls;
 
-  for (const i = 0; i < 100; i++) {
+  for (let i = 0; i < 100; i++) {
     const roomName = data.rooms[i];
     const basicInfo = faker.lorem.sentence();
     const pricePerNight = getRandomNum(50, 500);
@@ -52,7 +52,7 @@ const seedJoinTable = function() {
   const queryString = 'insert into listings2listings(listing_id, similar_listing_id) values ?';
   const queryArgs = [];
 
-  for (const i = 1; i < 101; i++) {
+  for (let i = 1; i < 101; i++) {
     const randomSimilarListing = getRandomNum(1, 11);
     queryArgs.push([i, randomSimilarListing]);
 

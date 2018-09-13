@@ -9,8 +9,8 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "seed": "nodemon database/seed_functions/seed.js",
-    "react-dev": "webpack -d --watch"
+    "seed": "node database/seed_functions/seed.js",
+    "react-dev": "webpack -d --watch "
   },
   "dependencies": {
     "body-parser": "^1.18.3",
