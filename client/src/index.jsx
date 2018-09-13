@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import Carousel from './components/Carousel.jsx';
 
-ReactDOM.render(<App roomId={window.location.pathname.slice(7)} />, document.getElementById('app'));
+ReactDOM.render(<Carousel roomId={window.location.pathname.slice(7)} />, document.getElementById('app'));

@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  "extends": "airbnb",
+  "extends": "",
   "env": {
   	"browser": true,
   	"node": true
