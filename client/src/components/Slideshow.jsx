@@ -1,36 +1,39 @@
 import React from 'react';
-import Slide from './Slide.jsx';
 import $ from 'jquery';
+import Slide from './Slide.jsx';
 
 const style = {
-  display: 'inline-block'
-}
+  display: 'inline-block',
+};
 
 class Slideshow extends React.Component {
   constructor(props) {
-  	super(props);
-  	this.state = {
-  	  listings: [],
-  	  names: [],
-  	  photoUrls: []
-  	}
+    super(props);
+    this.state = {
+      names: [],
+      photoUrls: [],
+      basicInfo: [],
+    };
   }
 
   componentDidMount() {
+    const { roomId } = this.props;
     $.ajax({
-      url: `http://localhost:3000/listings${this.props.roomId}`,
+      url: `http://localhost:3000/listings${roomId}`,
       method: 'GET',
       contentType: 'application/json',
       success: (listings) => {
-      	const names = [];
-      	const photoUrls = [];
+        const names = [];
+        const photoUrls = [];
+        const basicInfo = [];
         listings.forEach(listing => names.push(listing.name));
-        listings.forEach(listing => photoUrls.push(listing.image_url))
+        listings.forEach(listing => photoUrls.push(listing.image_url));
+        listings.forEach(listing => basicInfo.push(listing.basic_info));
         this.setState({
           names: names,
-          photoUrls: photoUrls
+          photoUrls: photoUrls,
+          basicInfo: basicInfo
         });
-
       },
       error: (err) => {
         console.error(err);
@@ -39,19 +42,21 @@ class Slideshow extends React.Component {
   }
 
   render() {
-  	return (
-  	  <div>
-  	  	<div style={style}>
-  	  	  <Slide names={this.state.names} photoUrls={this.state.photoUrls} index={this.props.firstIndex} />
-  	  	</div>
-  	  	<div style={style}>
-  	  	  <Slide names={this.state.names} photoUrls={this.state.photoUrls} index={this.props.middleIndex} />
-  	  	</div>
-  	  	<div style={style}>
-  	  	  <Slide names={this.state.names} photoUrls={this.state.photoUrls} index={this.props.lastIndex} />
-  	  	</div>
+    const { names, photoUrls, basicInfo } = this.state;
+    const { firstIndex, middleIndex, lastIndex } = this.props;
+    return (
+      <div>
+        <div style={style}>
+          <Slide names={names} photoUrls={photoUrls} index={firstIndex} />
+        </div>
+        <div style={style}>
+          <Slide names={names} photoUrls={photoUrls} index={middleIndex} />
+        </div>
+        <div style={style}>
+          <Slide names={names} photoUrls={photoUrls} index={lastIndex} />
+        </div>
       </div>
-  	);
+    );
   }
 }
 

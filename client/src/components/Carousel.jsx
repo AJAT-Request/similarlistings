@@ -1,52 +1,79 @@
 import React from 'react';
-import $ from 'jquery';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Slideshow from './Slideshow.jsx';
 
+const arrowStyle = {
+  display: 'inline-block',
+  position: 'relative',
+  bottom: '110px',
+};
+
+const slideshowStyle = {
+  display: 'inline-block',
+};
+
+const titleStyle = {
+  position: 'relative',
+  left: '38px',
+}
+
 class Carousel extends React.Component {
   constructor(props) {
-  	super(props);
-  	this.state = {
-  	  firstIndex: 0,
-  	  middleIndex: 1,
-  	  lastIndex: 2
-  	};
-  	this.onRightArrowClick = this.onRightArrowClick.bind(this);
-  	this.onLeftArrowClick = this.onLeftArrowClick.bind(this);
+    super(props);
+    this.state = {
+      firstIndex: 0,
+      middleIndex: 1,
+      lastIndex: 2,
+    };
+    this.onRightArrowClick = this.onRightArrowClick.bind(this);
+    this.onLeftArrowClick = this.onLeftArrowClick.bind(this);
   }
 
   onLeftArrowClick() {
-  	if (this.state.middleIndex > 1) {
-  	  this.setState({
-  	    firstIndex: (this.state.firstIndex) - 1,
-  	    middleIndex: (this.state.middleIndex) - 1,
-  	    lastIndex: (this.state.lastIndex) - 1
-  	  });
-  	}
-  	console.log(this.state)
+    const { firstIndex, middleIndex, lastIndex } = this.state;
+    if (middleIndex > 1) {
+      this.setState({
+        firstIndex: (firstIndex) - 1,
+        middleIndex: (middleIndex) - 1,
+        lastIndex: (lastIndex) - 1,
+      });
+    }
   }
 
   onRightArrowClick() {
-  	if (this.state.lastIndex < 4) {
-  	  this.setState({
-  	    firstIndex: (this.state.firstIndex) + 1,
-  	    middleIndex: (this.state.middleIndex) + 1,
-  	    lastIndex: (this.state.lastIndex) + 1
-  	  });	
-  	}
-  	console.log(this.state)
+    const { firstIndex, middleIndex, lastIndex } = this.state;
+    if (lastIndex < 4) {
+      this.setState({
+        firstIndex: (firstIndex) + 1,
+        middleIndex: (middleIndex) + 1,
+        lastIndex: (lastIndex) + 1,
+      });
+    }
   }
 
   render() {
+    const { firstIndex, middleIndex, lastIndex } = this.state;
+    const { roomId } = this.props;
     return (
-  	  <div className="carousel">
-  	  	<Slideshow currentMiddleIndex={this.state.currentMiddleIndex} firstIndex={this.state.firstIndex} 
-  	  	middleIndex={this.state.middleIndex} lastIndex={this.state.lastIndex} roomId={this.props.roomId}/>
-  	  	<LeftArrow changeIndices={this.onLeftArrowClick}/>
-  	    <RightArrow changeIndices={this.onRightArrowClick}/>
-  	  </div>
-  	);
+      <div>
+        <div style={titleStyle}>Similar Listings</div>
+        <div style={arrowStyle}>
+          <LeftArrow changeIndices={this.onLeftArrowClick} />
+        </div>
+        <div style={slideshowStyle}>
+          <Slideshow
+            firstIndex={firstIndex}
+            middleIndex={middleIndex}
+            lastIndex={lastIndex}
+            roomId={roomId}
+          />
+        </div>
+        <div style={arrowStyle}>
+          <RightArrow changeIndices={this.onRightArrowClick} />
+        </div>
+      </div>
+    );
   }
 }
 
