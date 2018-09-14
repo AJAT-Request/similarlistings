@@ -9,7 +9,7 @@ CREATE table listings (
   name VARCHAR(50),
   basic_info VARCHAR(150),
   price_per_night INT,
-  average_rating DECIMAL(2, 1),
+  number_of_reviews INT,
   image_url VARCHAR(150),
   PRIMARY KEY(id) 
 );

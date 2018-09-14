@@ -1,14 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const arrowStyle = {
-  fontSize: '50px',
-};
+const Arrow = styled.section`
+  font-size: 50px;
+  color: #505050;
+`;
 
 const RightArrow = ({ changeIndices }) => {
   return (
-    <div onClick={changeIndices}>
-      <i style={arrowStyle} className="fa fa-angle-right" aria-hidden="true" />
-    </div>
+    <Arrow onClick={changeIndices}>
+      <i className="fa fa-angle-right" aria-hidden="true" />
+    </Arrow>
   );
 };
 

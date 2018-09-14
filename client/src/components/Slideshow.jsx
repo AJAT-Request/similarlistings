@@ -1,10 +1,15 @@
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
 import Slide from './Slide.jsx';
 
 const style = {
   display: 'inline-block',
 };
+
+const Listing = styled.section`
+  display: inline-block;
+`;
 
 class Slideshow extends React.Component {
   constructor(props) {
@@ -13,26 +18,22 @@ class Slideshow extends React.Component {
       names: [],
       photoUrls: [],
       basicInfo: [],
+      prices: [],
     };
   }
 
   componentDidMount() {
     const { roomId } = this.props;
     $.ajax({
-      url: `http://localhost:3000/listings${roomId}`,
+      url: `http://localhost:3000/listings/${roomId}`,
       method: 'GET',
       contentType: 'application/json',
       success: (listings) => {
-        const names = [];
-        const photoUrls = [];
-        const basicInfo = [];
-        listings.forEach(listing => names.push(listing.name));
-        listings.forEach(listing => photoUrls.push(listing.image_url));
-        listings.forEach(listing => basicInfo.push(listing.basic_info));
         this.setState({
-          names: names,
-          photoUrls: photoUrls,
-          basicInfo: basicInfo
+          names: listings.names,
+          photoUrls: listings.photoUrls,
+          basicInfo: listings.basicInfo,
+          prices: listings.prices,
         });
       },
       error: (err) => {
@@ -42,18 +43,36 @@ class Slideshow extends React.Component {
   }
 
   render() {
-    const { names, photoUrls, basicInfo } = this.state;
+    const { names, photoUrls, basicInfo, prices } = this.state;
     const { firstIndex, middleIndex, lastIndex } = this.props;
     return (
       <div>
         <div style={style}>
-          <Slide names={names} photoUrls={photoUrls} index={firstIndex} />
+          <Slide
+            names={names}
+            photoUrls={photoUrls}
+            basicInfo={basicInfo}
+            prices={prices}
+            index={firstIndex}
+          />
         </div>
         <div style={style}>
-          <Slide names={names} photoUrls={photoUrls} index={middleIndex} />
+          <Slide
+            names={names}
+            photoUrls={photoUrls}
+            basicInfo={basicInfo}
+            prices={prices}
+            index={middleIndex}
+          />
         </div>
         <div style={style}>
-          <Slide names={names} photoUrls={photoUrls} index={lastIndex} />
+          <Slide
+            names={names}
+            photoUrls={photoUrls}
+            basicInfo={basicInfo}
+            prices={prices}
+            index={lastIndex}
+          />
         </div>
       </div>
     );
