@@ -1,6 +1,6 @@
+const faker = require('faker');
 const con = require('../index.js');
 const data = require('../data/roomData.js');
-const faker = require('faker');
 
 // ----------------- Math Helper Functions ------------------ //
 
