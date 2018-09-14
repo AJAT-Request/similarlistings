@@ -7,15 +7,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
-
 app.use(express.static(path.join(__dirname, '/../client/dist/')));
 
-app.get('/rooms:roomId', (req, res) => {
+app.get('/rooms/:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
 });
 
-app.get('/listings:roomId', (req, res) => {
-  const roomId = req.params.roomId;
+app.get('/listings/:roomId', (req, res) => {
+  const { roomId } = req.params;
   const queryString = 'select listing_id from listings2listings where similar_listing_id = (select similar_listing_id from listings2listings where listing_id = ?)';
 
   db.query(queryString, roomId, (err, results) => {
@@ -25,8 +24,24 @@ app.get('/listings:roomId', (req, res) => {
       listingIds.push([result.listing_id])
     ));
 
-    db.query('select * from listings where id in (?, ?, ?, ?, ?)', listingIds, (err, listings) => {
-      res.send(listings);
+    db.query('select * from listings where id in (?, ?, ?, ?, ?)', listingIds, (error, listings) => {
+      const names = [];
+      const photoUrls = [];
+      const basicInfo = [];
+      const prices = [];
+      const reviews = [];
+      listings.forEach(listing => names.push(listing.name));
+      listings.forEach(listing => photoUrls.push(listing.image_url));
+      listings.forEach(listing => basicInfo.push(listing.basic_info));
+      listings.forEach(listing => prices.push(listing.price_per_night));
+      listings.forEach(listing => reviews.push(listing.number_of_reviews));
+      res.send({
+        names: names,
+        photoUrls: photoUrls,
+        basicInfo: basicInfo,
+        prices: prices,
+        reviews: reviews,
+      });
     });
   });
 });

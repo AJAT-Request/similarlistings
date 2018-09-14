@@ -16,7 +16,7 @@ const slideshowStyle = {
 const titleStyle = {
   position: 'relative',
   left: '38px',
-}
+};
 
 class Carousel extends React.Component {
   constructor(props) {

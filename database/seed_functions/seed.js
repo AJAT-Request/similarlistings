@@ -25,21 +25,21 @@ const getListings = function() {
 
   for (let i = 0; i < 100; i++) {
     const roomName = data.rooms[i];
-    const basicInfo = faker.lorem.sentence();
+    const basicInfo = faker.lorem.words();
     const pricePerNight = getRandomNum(50, 500);
-    const averageRating = getRandomDecimal(3, 5);
+    const numberOfReviews = getRandomNum(50, 200);
     const randomIndex = getRandomNum(0, 10);
     const photoUrl = photoUrls[randomIndex];
 
-    const listing = [roomName, basicInfo, pricePerNight, averageRating, photoUrl];
-    listings.push(listing)
+    const listing = [roomName, basicInfo, pricePerNight, numberOfReviews, photoUrl];
+    listings.push(listing);
   }
 
   return listings;
 }
 
 const seedListings = function() {
-  const queryString = 'insert into listings(name, basic_info, price_per_night, average_rating, image_url) values ?';
+  const queryString = 'insert into listings(name, basic_info, price_per_night, number_of_reviews, image_url) values ?';
   const queryArgs = getListings();
 
   con.query(queryString, [queryArgs], function(err, results) {
@@ -65,6 +65,5 @@ const seedJoinTable = function() {
     console.log('Added ' + results.affectedRows + ' rows to listings2listings')
   });
 }
-
 seedListings();
 seedJoinTable();
