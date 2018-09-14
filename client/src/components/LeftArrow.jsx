@@ -1,10 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Arrow = styled.section`
-  font-size: 50px;
-  color: #505050;
-`;
+import { Arrow } from '../../../css/styles.jsx';
 
 const LeftArrow = ({ changeIndices }) => {
   return (

@@ -1,15 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
-import styled from 'styled-components';
 import Slide from './Slide.jsx';
-
-const style = {
-  display: 'inline-block',
-};
-
-const Listing = styled.section`
-  display: inline-block;
-`;
+import { Listings } from '../../../css/styles.jsx';
 
 class Slideshow extends React.Component {
   constructor(props) {
@@ -46,35 +38,29 @@ class Slideshow extends React.Component {
     const { names, photoUrls, basicInfo, prices } = this.state;
     const { firstIndex, middleIndex, lastIndex } = this.props;
     return (
-      <div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={firstIndex}
-          />
-        </div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={middleIndex}
-          />
-        </div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={lastIndex}
-          />
-        </div>
-      </div>
+      <Listings>
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          index={firstIndex}
+        />
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          index={middleIndex}
+        />
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          index={lastIndex}
+        />
+      </Listings>
     );
   }
 }
