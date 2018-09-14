@@ -1,10 +1,15 @@
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
 import Slide from './Slide.jsx';
 
 const style = {
   display: 'inline-block',
 };
+
+const Listing = styled.section`
+  display: inline-block;
+`;
 
 class Slideshow extends React.Component {
   constructor(props) {
