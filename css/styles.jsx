@@ -62,12 +62,11 @@ const ImageStyle = {
 };
 
 const StarStyle = styled.section`
-  display: inline-block;
-  position: relative;
-  left: 5px;
+  display: inline-flex;
+  justify-content: space-evenly;
   color: #008489;
-  padding-left: 4px;
   padding-top: 3px;
+  transform: scale(0.5);
 `;
 
 const Reviews = styled.section`
