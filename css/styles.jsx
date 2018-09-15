@@ -6,6 +6,7 @@ const Arrow = styled.section`
   display: inline-block;
   position: relative;
   bottom: 150px;
+  padding-left: 10px;
 `;
 
 const Listings = styled.section`
@@ -14,7 +15,7 @@ const Listings = styled.section`
 
 const Title = styled.section`
   position: relative;
-  left: 38px;
+  left: 45px;
   padding-bottom: 24px;
   font-family: -apple-system, BlinkMacSystemFont;
   font-weight: 700;
@@ -62,8 +63,31 @@ const ImageStyle = {
 
 const StarStyle = styled.section`
   display: inline-block;
+  position: relative;
+  left: 5px;
   color: #008489;
-  padding-left: 15px;
+  padding-left: 4px;
+  padding-top: 3px;
 `;
 
-export { Arrow, Listings, Title, Description, Name, Price, Listing, ImageStyle, StarStyle };
+const Reviews = styled.section`
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+  font-family: -apple-system, BlinkMacSystemFont;
+  font-size: 12px;
+  font-weight: 300;
+`;
+
+export {
+  Arrow,
+  Listings,
+  Title,
+  Description,
+  Name,
+  Price,
+  Listing,
+  ImageStyle,
+  StarStyle,
+  Reviews,
+};

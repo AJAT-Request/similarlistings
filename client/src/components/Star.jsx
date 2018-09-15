@@ -1,10 +1,10 @@
 import React from 'react';
 import { StarStyle } from '../../../css/styles.jsx';
 
-const Star = (props) => {
+const Star = () => {
   return (
     <StarStyle>
-      <i className="fas fa-star" style={{height:"50%", width:"50%"}}/>
+      <i className="fas fa-star" />
     </StarStyle>
   );
 };

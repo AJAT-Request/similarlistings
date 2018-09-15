@@ -11,6 +11,7 @@ class Slideshow extends React.Component {
       photoUrls: [],
       basicInfo: [],
       prices: [],
+      reviews: [],
     };
   }
 
@@ -26,6 +27,7 @@ class Slideshow extends React.Component {
           photoUrls: listings.photoUrls,
           basicInfo: listings.basicInfo,
           prices: listings.prices,
+          reviews: listings.reviews,
         });
       },
       error: (err) => {
@@ -35,7 +37,7 @@ class Slideshow extends React.Component {
   }
 
   render() {
-    const { names, photoUrls, basicInfo, prices } = this.state;
+    const { names, photoUrls, basicInfo, prices, reviews } = this.state;
     const { firstIndex, middleIndex, lastIndex } = this.props;
     return (
       <Listings>
@@ -44,6 +46,7 @@ class Slideshow extends React.Component {
           photoUrls={photoUrls}
           basicInfo={basicInfo}
           prices={prices}
+          reviews={reviews}
           index={firstIndex}
         />
         <Slide
@@ -51,6 +54,7 @@ class Slideshow extends React.Component {
           photoUrls={photoUrls}
           basicInfo={basicInfo}
           prices={prices}
+          reviews={reviews}
           index={middleIndex}
         />
         <Slide
@@ -58,6 +62,7 @@ class Slideshow extends React.Component {
           photoUrls={photoUrls}
           basicInfo={basicInfo}
           prices={prices}
+          reviews={reviews}
           index={lastIndex}
         />
       </Listings>
