@@ -35,7 +35,7 @@ const Title = styled.section`
 const Description = styled.section`
   font-family: -apple-system, BlinkMacSystemFont;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   padding-left: 10px;
   text-transform: uppercase;
   color: rgb(115, 79, 33);
