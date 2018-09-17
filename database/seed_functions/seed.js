@@ -2,68 +2,58 @@ const faker = require('faker');
 const con = require('../index.js');
 const data = require('../data/roomData.js');
 
-// ----------------- Math Helper Functions ------------------ //
+const getRandomNum = (min, max) => {
+  const low = Math.ceil(min);
+  const high = Math.floor(max);
+  return Math.floor(Math.random() * (high - low)) + low;
+};
 
-const getRandomNum = function (min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-const getRandomDecimal = function(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return ((Math.random() * (max - min)) + min).toFixed(1);
-}
-
-// --------------------------------------------------------- //
-
-
-const getListings = function() {
+const getListings = () => {
   const listings = [];
-  const photoUrls = data.photoUrls;
+  const { photoUrls } = data;
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 100; i += 1) {
     const roomName = data.rooms[i];
-    const basicInfo = faker.lorem.words();
+    const numberOfBeds = getRandomNum(3, 8);
     const pricePerNight = getRandomNum(50, 500);
     const numberOfReviews = getRandomNum(50, 200);
-    const randomIndex = getRandomNum(0, 10);
+    const randomIndex = getRandomNum(0, 15);
     const photoUrl = photoUrls[randomIndex];
 
-    const listing = [roomName, basicInfo, pricePerNight, numberOfReviews, photoUrl];
+    const listing = [roomName, numberOfBeds, pricePerNight, numberOfReviews, photoUrl];
     listings.push(listing);
   }
 
   return listings;
-}
+};
 
-const seedListings = function() {
-  const queryString = 'insert into listings(name, basic_info, price_per_night, number_of_reviews, image_url) values ?';
+const seedListings = () => {
+  const queryString = 'insert into listings(name, number_of_beds, price_per_night, number_of_reviews, image_url) values ?';
   const queryArgs = getListings();
 
-  con.query(queryString, [queryArgs], function(err, results) {
-  	console.log('Added ' + results.affectedRows + ' rows to listings');
+  con.query(queryString, [queryArgs], (err, results) => {
+    console.log(`Added ${results.affectedRows} rows to listings`);
   });
+};
 
-}
-
-const seedJoinTable = function() {
+const seedJoinTable = () => {
   const queryString = 'insert into listings2listings(listing_id, similar_listing_id) values ?';
   const queryArgs = [];
 
-  for (let i = 1; i < 101; i++) {
-    const randomSimilarListing = getRandomNum(1, 11);
-    queryArgs.push([i, randomSimilarListing]);
-
+  for (let i = 1; i < 101; i += 1) {
+    queryArgs.push([i, getRandomNum(1, 20)]);
+    queryArgs.push([i, getRandomNum(21, 40)]);
+    queryArgs.push([i, getRandomNum(41, 60)]);
+    queryArgs.push([i, getRandomNum(61, 80)]);
+    queryArgs.push([i, getRandomNum(81, 101)]);
   }
-
-  con.query(queryString, [queryArgs], function(err, results) {
+  con.query(queryString, [queryArgs], (err, results) => {
     if (err) {
       return console.log(err);
     }
-    console.log('Added ' + results.affectedRows + ' rows to listings2listings')
+    return console.log(`Added ${results.affectedRows} rows to listings2listings`);
   });
-}
+};
+
 seedListings();
 seedJoinTable();

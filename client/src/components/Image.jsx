@@ -6,7 +6,6 @@ const Image = ({ photoUrls, index }) => (
   <img style={ImageStyle} src={photoUrls[index]} alt="" />
 );
 
-
 export default Image;
 
 Image.defaultProps = {
