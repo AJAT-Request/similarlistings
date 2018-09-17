@@ -43,17 +43,19 @@ class Carousel extends React.Component {
     const { firstIndex, middleIndex, lastIndex } = this.state;
     const { roomId } = this.props;
     return (
-      <Listings>
+      <div>
         <Title>Similar Listings</Title>
-        <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
-        <Slideshow
-          firstIndex={firstIndex}
-          middleIndex={middleIndex}
-          lastIndex={lastIndex}
-          roomId={roomId}
-        />
-        <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
-      </Listings>
+        <Listings>
+          <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
+          <Slideshow
+            firstIndex={firstIndex}
+            middleIndex={middleIndex}
+            lastIndex={lastIndex}
+            roomId={roomId}
+          />
+          <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
+        </Listings>
+      </div>
     );
   }
 }
