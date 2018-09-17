@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Slideshow from './Slideshow.jsx';
-import { Title } from '../../../css/styles.jsx';
+import { Title, Listings } from '../../../css/styles.jsx';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -21,9 +21,9 @@ class Carousel extends React.Component {
     const { firstIndex, middleIndex, lastIndex } = this.state;
     if (middleIndex > 1) {
       this.setState({
-        firstIndex: (firstIndex) - 1,
-        middleIndex: (middleIndex) - 1,
-        lastIndex: (lastIndex) - 1,
+        firstIndex: firstIndex - 1,
+        middleIndex: middleIndex - 1,
+        lastIndex: lastIndex - 1,
       });
     }
   }
@@ -32,9 +32,9 @@ class Carousel extends React.Component {
     const { firstIndex, middleIndex, lastIndex } = this.state;
     if (lastIndex < 4) {
       this.setState({
-        firstIndex: (firstIndex) + 1,
-        middleIndex: (middleIndex) + 1,
-        lastIndex: (lastIndex) + 1,
+        firstIndex: firstIndex + 1,
+        middleIndex: middleIndex + 1,
+        lastIndex: lastIndex + 1,
       });
     }
   }
@@ -43,7 +43,7 @@ class Carousel extends React.Component {
     const { firstIndex, middleIndex, lastIndex } = this.state;
     const { roomId } = this.props;
     return (
-      <div>
+      <Listings>
         <Title>Similar Listings</Title>
         <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
         <Slideshow
@@ -53,7 +53,7 @@ class Carousel extends React.Component {
           roomId={roomId}
         />
         <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
-      </div>
+      </Listings>
     );
   }
 }
@@ -65,5 +65,5 @@ Carousel.defaultProps = {
 };
 
 Carousel.propTypes = {
-  roomId: PropTypes.number,
+  roomId: PropTypes.string,
 };
