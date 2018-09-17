@@ -11,10 +11,10 @@ import {
   NumberOfReviews,
 } from '../../../css/styles.jsx';
 
-const Slide = ({ names, photoUrls, basicInfo, prices, reviews, index }) => (
+const Slide = ({ names, photoUrls, numberOfBeds, prices, reviews, index }) => (
   <Listing>
     <Image photoUrls={photoUrls} index={index} />
-    <Description>{basicInfo[index]}</Description>
+    <Description>{`ENTIRE HOUSE • ${numberOfBeds[index]} BEDS`}</Description>
     <Name>{names[index]}</Name>
     <Price>{`$${prices[index]} per night`}</Price>
     <Reviews>

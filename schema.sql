@@ -7,7 +7,7 @@ USE airbnb;
 CREATE table listings (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(50),
-  basic_info VARCHAR(150),
+  number_of_beds INT,
   price_per_night INT,
   number_of_reviews INT,
   image_url VARCHAR(150),
