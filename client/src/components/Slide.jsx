@@ -29,7 +29,7 @@ export default Slide;
 Slide.defaultProps = {
   names: [],
   photoUrls: [],
-  basicInfo: [],
+  numberOfBeds: [],
   prices: [],
   reviews: [],
   index: null,
@@ -38,7 +38,7 @@ Slide.defaultProps = {
 Slide.propTypes = {
   names: PropTypes.arrayOf(PropTypes.string),
   photoUrls: PropTypes.arrayOf(PropTypes.string),
-  basicInfo: PropTypes.arrayOf(PropTypes.string),
+  numberOfBeds: PropTypes.arrayOf(PropTypes.number),
   prices: PropTypes.arrayOf(PropTypes.number),
   reviews: PropTypes.arrayOf(PropTypes.number),
   index: PropTypes.number,

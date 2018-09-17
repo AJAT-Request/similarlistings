@@ -12,5 +12,4 @@ const Stars = () => (
   </Ratings>
 );
 
-
 export default Stars;
