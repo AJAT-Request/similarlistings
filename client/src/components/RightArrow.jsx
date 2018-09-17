@@ -1,17 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { Arrow, HiddenArrow } from '../../../css/styles.jsx';
 
-const Arrow = styled.section`
-  font-size: 50px;
-  color: #505050;
-`;
-
-const RightArrow = ({ changeIndices }) => {
+const RightArrow = ({ changeIndices, lastIndex }) => {
+  if (lastIndex < 4) {
+    return (
+      <Arrow onClick={changeIndices}>
+        <i className="fa fa-angle-right" />
+      </Arrow>
+    );
+  }
   return (
-    <Arrow onClick={changeIndices}>
-      <i className="fa fa-angle-right" aria-hidden="true" />
-    </Arrow>
+    <HiddenArrow>
+      <i className="fa fa-angle-right" />
+    </HiddenArrow>
   );
 };
 
 export default RightArrow;
+
+RightArrow.defaultProps = {
+  changeIndices: null,
+  lastIndex: null,
+};
+
+RightArrow.propTypes = {
+  changeIndices: PropTypes.func,
+  lastIndex: PropTypes.number,
+};

@@ -1,52 +1,45 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Stars from './Stars.jsx';
+import Image from './Image.jsx';
+import {
+  Description,
+  Name,
+  Price,
+  Listing,
+  Reviews,
+  NumberOfReviews,
+} from '../../../css/styles.jsx';
 
-const imageStyle = {
-  height: '220px',
-  width: '340px',
-  paddingLeft: '10px',
-};
-
-const Description = styled.section`
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-size: 12px;
-  font-weight: 700;
-  padding-left: 10px;
-  text-transform: uppercase;
-  color: rgb(115, 79, 33);
-`;
-
-const Name = styled.section`
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-size: 16px;
-  font-weight: 450;
-  padding-top: 3px;
-  padding-left: 10px;
-  text-transform: capitalize;
-  color: #505050;
-`;
-
-const Price = styled.section`
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-size: 14px;
-  font-weight: 300;
-  padding-top: 3px;
-  padding-left: 10px;
-  color: #505050;
-`;
-
-const Listing = styled.section`
-  display: inline-block;
-`;
-
-
-const Slide = ({ names, photoUrls, basicInfo, prices, index }) => (
+const Slide = ({ names, photoUrls, basicInfo, prices, reviews, index }) => (
   <Listing>
-    <img style={imageStyle} src={photoUrls[index]} alt="" />
+    <Image photoUrls={photoUrls} index={index} />
     <Description>{basicInfo[index]}</Description>
     <Name>{names[index]}</Name>
-    <Price>${prices[index]} per night</Price>
+    <Price>{`$${prices[index]} per night`}</Price>
+    <Reviews>
+      <Stars />
+      <NumberOfReviews>{reviews[index]}</NumberOfReviews>
+    </Reviews>
   </Listing>
 );
 
 export default Slide;
+
+Slide.defaultProps = {
+  names: [],
+  photoUrls: [],
+  basicInfo: [],
+  prices: [],
+  reviews: [],
+  index: null,
+};
+
+Slide.propTypes = {
+  names: PropTypes.arrayOf(PropTypes.string),
+  photoUrls: PropTypes.arrayOf(PropTypes.string),
+  basicInfo: PropTypes.arrayOf(PropTypes.string),
+  prices: PropTypes.arrayOf(PropTypes.number),
+  reviews: PropTypes.arrayOf(PropTypes.number),
+  index: PropTypes.number,
+};

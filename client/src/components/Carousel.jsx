@@ -1,28 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Slideshow from './Slideshow.jsx';
-
-const Arrow = styled.section`
-  display: inline-block;
-  position: relative;
-  bottom: 140px;
-`;
-
-const Listings = styled.section`
-  display: inline-block;
-`;
-
-const Title = styled.section`
-  position: relative;
-  left: 38px;
-  padding-bottom: 24px;
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-weight: 700;
-  font-size: 22px;
-  color: #505050;
-`;
+import { Title } from '../../../css/styles.jsx';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -64,19 +45,25 @@ class Carousel extends React.Component {
     return (
       <div>
         <Title>Similar Listings</Title>
-        <Arrow><LeftArrow changeIndices={this.onLeftArrowClick} /></Arrow>
-        <Listings>
-          <Slideshow
-            firstIndex={firstIndex}
-            middleIndex={middleIndex}
-            lastIndex={lastIndex}
-            roomId={roomId}
-          />
-        </Listings>
-        <Arrow><RightArrow changeIndices={this.onRightArrowClick} /></Arrow>
+        <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
+        <Slideshow
+          firstIndex={firstIndex}
+          middleIndex={middleIndex}
+          lastIndex={lastIndex}
+          roomId={roomId}
+        />
+        <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
       </div>
     );
   }
 }
 
 export default Carousel;
+
+Carousel.defaultProps = {
+  roomId: null,
+};
+
+Carousel.propTypes = {
+  roomId: PropTypes.number,
+};

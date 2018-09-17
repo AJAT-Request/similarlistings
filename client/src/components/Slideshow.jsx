@@ -1,15 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Slide from './Slide.jsx';
-
-const style = {
-  display: 'inline-block',
-};
-
-const Listing = styled.section`
-  display: inline-block;
-`;
+import { Listings } from '../../../css/styles.jsx';
 
 class Slideshow extends React.Component {
   constructor(props) {
@@ -19,6 +12,7 @@ class Slideshow extends React.Component {
       photoUrls: [],
       basicInfo: [],
       prices: [],
+      reviews: [],
     };
   }
 
@@ -34,6 +28,7 @@ class Slideshow extends React.Component {
           photoUrls: listings.photoUrls,
           basicInfo: listings.basicInfo,
           prices: listings.prices,
+          reviews: listings.reviews,
         });
       },
       error: (err) => {
@@ -43,40 +38,51 @@ class Slideshow extends React.Component {
   }
 
   render() {
-    const { names, photoUrls, basicInfo, prices } = this.state;
+    const { names, photoUrls, basicInfo, prices, reviews } = this.state;
     const { firstIndex, middleIndex, lastIndex } = this.props;
     return (
-      <div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={firstIndex}
-          />
-        </div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={middleIndex}
-          />
-        </div>
-        <div style={style}>
-          <Slide
-            names={names}
-            photoUrls={photoUrls}
-            basicInfo={basicInfo}
-            prices={prices}
-            index={lastIndex}
-          />
-        </div>
-      </div>
+      <Listings>
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          reviews={reviews}
+          index={firstIndex}
+        />
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          reviews={reviews}
+          index={middleIndex}
+        />
+        <Slide
+          names={names}
+          photoUrls={photoUrls}
+          basicInfo={basicInfo}
+          prices={prices}
+          reviews={reviews}
+          index={lastIndex}
+        />
+      </Listings>
     );
   }
 }
 
 export default Slideshow;
+
+Slideshow.defaultProps = {
+  roomId: null,
+  firstIndex: null,
+  middleIndex: null,
+  lastIndex: null,
+};
+
+Slideshow.propTypes = {
+  roomId: PropTypes.string,
+  firstIndex: PropTypes.number,
+  middleIndex: PropTypes.number,
+  lastIndex: PropTypes.number,
+};
