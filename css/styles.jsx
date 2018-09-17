@@ -3,9 +3,8 @@ import styled from 'styled-components';
 const Arrow = styled.section`
   font-size: 50px;
   color: #505050;
-  display: inline-block;
-  position: relative;
-  bottom: 150px;
+  display: inline-flex;
+  padding-top: 80px;
   padding-left: 10px;
 `;
 
@@ -19,7 +18,7 @@ const HiddenArrow = styled.section`
 `;
 
 const Listings = styled.section`
-  display: inline-block;
+  display: inline-flex;
 `;
 
 const Title = styled.section`
@@ -78,7 +77,6 @@ const SingleStar = styled.section`
 `;
 
 const Reviews = styled.section`
-  display: inline-block;
   position: relative;
   padding-left: 10px;
   font-family: -apple-system, BlinkMacSystemFont;
