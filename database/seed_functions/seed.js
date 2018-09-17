@@ -17,10 +17,11 @@ const getListings = () => {
     const numberOfBeds = getRandomNum(3, 8);
     const pricePerNight = getRandomNum(50, 500);
     const numberOfReviews = getRandomNum(50, 200);
+    const numberOfStars = getRandomNum(3, 6);
     const randomIndex = getRandomNum(0, 15);
     const photoUrl = photoUrls[randomIndex];
 
-    const listing = [roomName, numberOfBeds, pricePerNight, numberOfReviews, photoUrl];
+    const listing = [roomName, numberOfBeds, pricePerNight, numberOfReviews, numberOfStars, photoUrl];
     listings.push(listing);
   }
 
@@ -28,7 +29,7 @@ const getListings = () => {
 };
 
 const seedListings = () => {
-  const queryString = 'insert into listings(name, number_of_beds, price_per_night, number_of_reviews, image_url) values ?';
+  const queryString = 'insert into listings(name, number_of_beds, price_per_night, number_of_reviews, number_of_stars, image_url) values ?';
   const queryArgs = getListings();
 
   con.query(queryString, [queryArgs], (err, results) => {

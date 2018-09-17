@@ -10,6 +10,7 @@ CREATE table listings (
   number_of_beds INT,
   price_per_night INT,
   number_of_reviews INT,
+  number_of_stars INT,
   image_url VARCHAR(150),
   PRIMARY KEY(id) 
 );

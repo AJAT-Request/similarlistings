@@ -47,7 +47,7 @@ const ImageStyle = {
   zIndex: 1,
 };
 
-const Listing = styled.section`
+const ListingWrapper = styled.section`
   display: inline-block;
 `;
 
@@ -120,7 +120,7 @@ export {
   HiddenArrow,
   Heart,
   ImageStyle,
-  Listing,
+  ListingWrapper,
   ListingInfo,
   Listings,
   Name,

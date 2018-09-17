@@ -1,37 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Stars from './Stars.jsx';
-import Image from './Image.jsx';
-import HeartIcon from './HeartIcon.jsx';
 import {
   Description,
+  Heart,
+  ImageStyle,
   Name,
   Price,
-  Listing,
+  ListingWrapper,
   ListingInfo,
   Reviews,
   NumberOfReviews,
 } from '../../../css/styles.jsx';
 
-const Slide = ({ names, photoUrls, numberOfBeds, prices, reviews, index }) => (
-  <Listing>
-    <Image photoUrls={photoUrls} index={index} />
-    <HeartIcon />
+const Listing = ({ names, photoUrls, numberOfBeds, prices, reviews, stars, index }) => (
+  <ListingWrapper>
+    <img style={ImageStyle} src={photoUrls[index]} alt="" />
+    <Heart><i className="far fa-heart" /></Heart>
     <ListingInfo>
       <Description>{`ENTIRE HOUSE • ${numberOfBeds[index]} BEDS`}</Description>
       <Name>{names[index]}</Name>
       <Price>{`$${prices[index]} per night`}</Price>
       <Reviews>
-        <Stars />
+        <Stars numberOfStars={stars[index]} />
         <NumberOfReviews>{reviews[index]}</NumberOfReviews>
       </Reviews>
     </ListingInfo>
-  </Listing>
+  </ListingWrapper>
 );
 
-export default Slide;
+export default Listing;
 
-Slide.defaultProps = {
+Listing.defaultProps = {
   names: [],
   photoUrls: [],
   numberOfBeds: [],
@@ -40,7 +40,7 @@ Slide.defaultProps = {
   index: null,
 };
 
-Slide.propTypes = {
+Listing.propTypes = {
   names: PropTypes.arrayOf(PropTypes.string),
   photoUrls: PropTypes.arrayOf(PropTypes.string),
   numberOfBeds: PropTypes.arrayOf(PropTypes.number),

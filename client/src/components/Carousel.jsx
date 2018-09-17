@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
-import Slideshow from './Slideshow.jsx';
+import Listing from './Listing.jsx';
 import { Title, Listings } from '../../../css/styles.jsx';
 
 class Carousel extends React.Component {
@@ -12,9 +13,37 @@ class Carousel extends React.Component {
       firstIndex: 0,
       middleIndex: 1,
       lastIndex: 2,
+      names: [],
+      photoUrls: [],
+      numberOfBeds: [],
+      prices: [],
+      reviews: [],
+      stars: [],
     };
     this.onRightArrowClick = this.onRightArrowClick.bind(this);
     this.onLeftArrowClick = this.onLeftArrowClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { roomId } = this.props;
+    $.ajax({
+      url: `http://localhost:3000/listings/${roomId}`,
+      method: 'GET',
+      contentType: 'application/json',
+      success: (listings) => {
+        this.setState({
+          names: listings.names,
+          photoUrls: listings.photoUrls,
+          numberOfBeds: listings.numberOfBeds,
+          prices: listings.prices,
+          reviews: listings.reviews,
+          stars: listings.stars,
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    });
   }
 
   onLeftArrowClick() {
@@ -40,18 +69,48 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { firstIndex, middleIndex, lastIndex } = this.state;
-    const { roomId } = this.props;
+    const {
+      firstIndex,
+      middleIndex,
+      lastIndex,
+      names,
+      photoUrls,
+      numberOfBeds,
+      prices,
+      reviews,
+      stars,
+    } = this.state;
     return (
       <div>
         <Title>Similar Listings</Title>
         <Listings>
           <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
-          <Slideshow
-            firstIndex={firstIndex}
-            middleIndex={middleIndex}
-            lastIndex={lastIndex}
-            roomId={roomId}
+          <Listing
+            names={names}
+            photoUrls={photoUrls}
+            numberOfBeds={numberOfBeds}
+            prices={prices}
+            reviews={reviews}
+            stars={stars}
+            index={firstIndex}
+          />
+          <Listing
+            names={names}
+            photoUrls={photoUrls}
+            numberOfBeds={numberOfBeds}
+            prices={prices}
+            reviews={reviews}
+            stars={stars}
+            index={middleIndex}
+          />
+          <Listing
+            names={names}
+            photoUrls={photoUrls}
+            numberOfBeds={numberOfBeds}
+            prices={prices}
+            reviews={reviews}
+            stars={stars}
+            index={lastIndex}
           />
           <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
         </Listings>
