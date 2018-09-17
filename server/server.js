@@ -29,17 +29,20 @@ app.get('/listings/:roomId', (req, res) => {
       const numberOfBeds = [];
       const prices = [];
       const reviews = [];
+      const stars = [];
       listings.forEach(listing => names.push(listing.name));
       listings.forEach(listing => photoUrls.push(listing.image_url));
       listings.forEach(listing => numberOfBeds.push(listing.number_of_beds));
       listings.forEach(listing => prices.push(listing.price_per_night));
       listings.forEach(listing => reviews.push(listing.number_of_reviews));
+      listings.forEach(listing => stars.push(listing.number_of_stars));
       res.send({
         names,
         photoUrls,
         numberOfBeds,
         prices,
         reviews,
+        stars,
       });
     });
   });
