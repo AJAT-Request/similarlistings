@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Stars from './Stars.jsx';
 import Image from './Image.jsx';
+import HeartIcon from './HeartIcon.jsx';
 import {
   Description,
   Name,
   Price,
   Listing,
+  ListingInfo,
   Reviews,
   NumberOfReviews,
 } from '../../../css/styles.jsx';
@@ -14,13 +16,16 @@ import {
 const Slide = ({ names, photoUrls, numberOfBeds, prices, reviews, index }) => (
   <Listing>
     <Image photoUrls={photoUrls} index={index} />
-    <Description>{`ENTIRE HOUSE • ${numberOfBeds[index]} BEDS`}</Description>
-    <Name>{names[index]}</Name>
-    <Price>{`$${prices[index]} per night`}</Price>
-    <Reviews>
-      <Stars />
-      <NumberOfReviews>{reviews[index]}</NumberOfReviews>
-    </Reviews>
+    <HeartIcon />
+    <ListingInfo>
+      <Description>{`ENTIRE HOUSE • ${numberOfBeds[index]} BEDS`}</Description>
+      <Name>{names[index]}</Name>
+      <Price>{`$${prices[index]} per night`}</Price>
+      <Reviews>
+        <Stars />
+        <NumberOfReviews>{reviews[index]}</NumberOfReviews>
+      </Reviews>
+    </ListingInfo>
   </Listing>
 );
 
