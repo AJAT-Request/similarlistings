@@ -8,6 +8,15 @@ const Arrow = styled.section`
   padding-left: 10px;
 `;
 
+const Description = styled.section`
+  font-family: -apple-system, BlinkMacSystemFont;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 10px;
+  text-transform: uppercase;
+  color: rgb(115, 79, 33);
+`;
+
 const HiddenArrow = styled.section`
   display: inline-block;
   font-size: 50px;
@@ -17,27 +26,18 @@ const HiddenArrow = styled.section`
   visibility: hidden;
 `;
 
+const ImageStyle = {
+  height: '220px',
+  width: '340px',
+  paddingLeft: '10px',
+};
+
+const Listing = styled.section`
+  display: inline-block;
+`;
+
 const Listings = styled.section`
   display: inline-flex;
-`;
-
-const Title = styled.section`
-  position: relative;
-  left: 45px;
-  padding-bottom: 24px;
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-weight: 700;
-  font-size: 22px;
-  color: #505050;
-`;
-
-const Description = styled.section`
-  font-family: -apple-system, BlinkMacSystemFont;
-  font-size: 12px;
-  font-weight: 500;
-  padding-left: 10px;
-  text-transform: uppercase;
-  color: rgb(115, 79, 33);
 `;
 
 const Name = styled.section`
@@ -50,6 +50,13 @@ const Name = styled.section`
   color: #505050;
 `;
 
+const NumberOfReviews = styled.section`
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  font-weight: 400;
+`;
+
 const Price = styled.section`
   font-family: -apple-system, BlinkMacSystemFont;
   font-size: 14px;
@@ -59,21 +66,11 @@ const Price = styled.section`
   color: #505050;
 `;
 
-const Listing = styled.section`
+const Ratings = styled.section`
   display: inline-block;
-`;
-
-const ImageStyle = {
-  height: '220px',
-  width: '340px',
-  paddingLeft: '10px',
-};
-
-const SingleStar = styled.section`
-  display: inline-flex;
-  justify-content: space-evenly;
-  color: #008489;
+  position: relative;
   padding-top: 3px;
+  padding-right: 2px;
 `;
 
 const Reviews = styled.section`
@@ -84,32 +81,36 @@ const Reviews = styled.section`
   font-weight: 300;
 `;
 
-const Ratings = styled.section`
-  display: inline-block;
-  position: relative;
+const SingleStar = styled.section`
+  display: inline-flex;
+  justify-content: space-evenly;
+  color: #008489;
   padding-top: 3px;
-  padding-right: 2px;
 `;
 
-const NumberOfReviews = styled.section`
-  display: inline-block;
+
+const Title = styled.section`
   position: relative;
-  top: 1px;
-  font-weight: 400;
+  left: 45px;
+  padding-bottom: 24px;
+  font-family: -apple-system, BlinkMacSystemFont;
+  font-weight: 700;
+  font-size: 22px;
+  color: #505050;
 `;
 
 export {
   Arrow,
-  HiddenArrow,
-  Listings,
-  Title,
   Description,
-  Name,
-  Price,
-  Listing,
+  HiddenArrow,
   ImageStyle,
-  SingleStar,
-  Reviews,
-  Ratings,
+  Listing,
+  Listings,
+  Name,
   NumberOfReviews,
+  Price,
+  Ratings,
+  Reviews,
+  SingleStar,
+  Title,
 };
