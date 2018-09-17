@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Slideshow from './Slideshow.jsx';
@@ -44,17 +45,25 @@ class Carousel extends React.Component {
     return (
       <div>
         <Title>Similar Listings</Title>
-        <LeftArrow changeIndices={this.onLeftArrowClick} />
+        <LeftArrow changeIndices={this.onLeftArrowClick} firstIndex={firstIndex} />
         <Slideshow
           firstIndex={firstIndex}
           middleIndex={middleIndex}
           lastIndex={lastIndex}
           roomId={roomId}
         />
-        <RightArrow changeIndices={this.onRightArrowClick} />
+        <RightArrow changeIndices={this.onRightArrowClick} lastIndex={lastIndex} />
       </div>
     );
   }
 }
 
 export default Carousel;
+
+Carousel.defaultProps = {
+  roomId: null,
+};
+
+Carousel.propTypes = {
+  roomId: PropTypes.number,
+};

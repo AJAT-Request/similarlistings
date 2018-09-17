@@ -1,12 +1,30 @@
 import React from 'react';
-import { Arrow } from '../../../css/styles.jsx';
+import PropTypes from 'prop-types';
+import { Arrow, HiddenArrow } from '../../../css/styles.jsx';
 
-const LeftArrow = ({ changeIndices }) => {
+const LeftArrow = ({ changeIndices, firstIndex }) => {
+  if (firstIndex > 0) {
+    return (
+      <Arrow onClick={changeIndices}>
+        <i className="fa fa-angle-left" />
+      </Arrow>
+    );
+  }
   return (
-    <Arrow className="backArrow" onClick={changeIndices}>
-      <i className="fa fa-angle-left" aria-hidden="true" />
-    </Arrow>
+    <HiddenArrow>
+      <i className="fa fa-angle-left" />
+    </HiddenArrow>
   );
 };
 
 export default LeftArrow;
+
+LeftArrow.defaultProps = {
+  changeIndices: null,
+  firstIndex: null,
+};
+
+LeftArrow.propTypes = {
+  changeIndices: PropTypes.func,
+  firstIndex: PropTypes.number,
+};

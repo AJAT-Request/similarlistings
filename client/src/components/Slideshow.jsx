@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import PropTypes from 'prop-types';
 import Slide from './Slide.jsx';
 import { Listings } from '../../../css/styles.jsx';
 
@@ -71,3 +72,17 @@ class Slideshow extends React.Component {
 }
 
 export default Slideshow;
+
+Slideshow.defaultProps = {
+  roomId: null,
+  firstIndex: null,
+  middleIndex: null,
+  lastIndex: null,
+};
+
+Slideshow.propTypes = {
+  roomId: PropTypes.string,
+  firstIndex: PropTypes.number,
+  middleIndex: PropTypes.number,
+  lastIndex: PropTypes.number,
+};

@@ -1,12 +1,10 @@
 import React from 'react';
-import { StarStyle } from '../../../css/styles.jsx';
+import { SingleStar } from '../../../css/styles.jsx';
 
-const Star = () => {
-  return (
-    <StarStyle>
-      <i className="fas fa-star" />
-    </StarStyle>
-  );
-};
+const Star = () => (
+  <SingleStar>
+    <i className="fas fa-star" />
+  </SingleStar>
+);
 
 export default Star;

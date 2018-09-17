@@ -9,6 +9,15 @@ const Arrow = styled.section`
   padding-left: 10px;
 `;
 
+const HiddenArrow = styled.section`
+  display: inline-block;
+  font-size: 50px;
+  position: relative;
+  bottom: 150px;
+  padding-left: 10px;
+  visibility: hidden;
+`;
+
 const Listings = styled.section`
   display: inline-block;
 `;
@@ -61,12 +70,11 @@ const ImageStyle = {
   paddingLeft: '10px',
 };
 
-const StarStyle = styled.section`
+const SingleStar = styled.section`
   display: inline-flex;
   justify-content: space-evenly;
   color: #008489;
   padding-top: 3px;
-  transform: scale(0.5);
 `;
 
 const Reviews = styled.section`
@@ -78,8 +86,23 @@ const Reviews = styled.section`
   font-weight: 300;
 `;
 
+const Ratings = styled.section`
+  display: inline-block;
+  position: relative;
+  padding-top: 3px;
+  padding-right: 2px;
+`;
+
+const NumberOfReviews = styled.section`
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  font-weight: 400;
+`;
+
 export {
   Arrow,
+  HiddenArrow,
   Listings,
   Title,
   Description,
@@ -87,6 +110,8 @@ export {
   Price,
   Listing,
   ImageStyle,
-  StarStyle,
+  SingleStar,
   Reviews,
+  Ratings,
+  NumberOfReviews,
 };
