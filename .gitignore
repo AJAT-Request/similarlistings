@@ -28,4 +28,4 @@ client/dist/bundle.js
 grunt-aws.json
 
 # Database config file
-database/config.js
+database/
