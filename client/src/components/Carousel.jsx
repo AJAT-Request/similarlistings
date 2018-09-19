@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
+import photoData from '../../../database/data/dummyData.js';
 import LeftArrow from './LeftArrow.jsx';
 import RightArrow from './RightArrow.jsx';
 import Listing from './Listing.jsx';
@@ -13,12 +14,12 @@ class Carousel extends React.Component {
       firstIndex: 0,
       middleIndex: 1,
       lastIndex: 2,
-      names: ['hi', 'bye'],
-      photoUrls: [],
-      numberOfBeds: [],
-      prices: [],
-      reviews: [],
-      stars: [],
+      names: ['House', 'Cool House', 'Grass House', 'Your House', 'My House'],
+      photoUrls: photoData,
+      numberOfBeds: [5, 5, 5, 5, 5],
+      prices: [100, 100, 100, 100, 100],
+      reviews: [100, 100, 100, 100, 100],
+      stars: [5, 5, 5, 5, 5],
     };
     this.onRightArrowClick = this.onRightArrowClick.bind(this);
     this.onLeftArrowClick = this.onLeftArrowClick.bind(this);

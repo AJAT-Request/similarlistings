@@ -18,7 +18,7 @@ const Stars = ({ numberOfStars }) => {
 export default Stars;
 
 Stars.defaultProps = {
-  numberOfStars: null,
+  numberOfStars: 5,
 };
 
 Stars.propTypes = {

@@ -37,7 +37,7 @@ Listing.defaultProps = {
   numberOfBeds: [],
   prices: [],
   reviews: [],
-  index: null,
+  index: 0,
 };
 
 Listing.propTypes = {
