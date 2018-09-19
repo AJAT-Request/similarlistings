@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../database/index.js');
 
+const PORT = 3001;
 const app = express();
 
 app.use(bodyParser.json());
@@ -48,5 +49,4 @@ app.get('/listings/:roomId', (req, res) => {
   });
 });
 
-const PORT = 3000;
 app.listen(PORT, () => { console.log(`Listening on port: ${PORT}`); });

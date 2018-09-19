@@ -13,7 +13,7 @@ class Carousel extends React.Component {
       firstIndex: 0,
       middleIndex: 1,
       lastIndex: 2,
-      names: [],
+      names: ['hi', 'bye'],
       photoUrls: [],
       numberOfBeds: [],
       prices: [],
@@ -27,7 +27,7 @@ class Carousel extends React.Component {
   componentDidMount() {
     const { roomId } = this.props;
     $.ajax({
-      url: `http://localhost:3000/listings/${roomId}`,
+      url: `http://localhost:3001/listings/${roomId}`,
       method: 'GET',
       contentType: 'application/json',
       success: (listings) => {
